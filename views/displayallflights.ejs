@@ -1,0 +1,139 @@
+<style>
+  .maincontainer {
+    background-color: rgb(166, 186, 240);
+    width: 100vw;
+    height: 100vh;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+  }
+
+  .box {
+
+    background-color: white;
+    width: 90%;
+    height: auto;
+
+    border-radius: 30px;
+    border-style: solid;
+
+    border-width: 5px;
+    padding: 15px;
+
+  }
+
+  .heading {
+    text-align: left;
+    text-decoration: solid;
+    font-size: 25px;
+    letter-spacing: 1px;
+    font-weight: bold;
+    color: #273c75;
+    display: flex;
+    flex-direction: row;
+    justify-content: space-between;
+    margin-bottom: 10px;
+
+  }
+
+  .daysstyle {
+    display: flex;
+    flex-direction: row;
+    align-items: center;
+    justify-content: space-evenly;
+  }
+
+  .buttonstyle {
+    width: 100%;
+
+  }
+</style>
+<html>
+
+
+<head>
+  <title>Flight Interface</title>
+  <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.1/dist/css/bootstrap.min.css" rel="stylesheet"
+    integrity="sha384-4bw+/aepP/YC94hEpVNVgiZdgIC5+VKNBQNGCHeKRQN+PtmoHDEXuppvnDJzQIu9" crossorigin="anonymous">
+  <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.1/dist/js/bootstrap.bundle.min.js"
+    integrity="sha384-HwwvtgBNo3bZJJLYd8oVXjrBZt8cqVSpeBNS5n7C8IVInixGAoxmnlMuBnhbgrkm"
+    crossorigin="anonymous"></script>
+</head>
+
+<body>
+  <div class="maincontainer">
+    <div class="box">
+      <div class="heading">
+        <div><img src="/images/flighticon1.png" height="50" width="50">
+          <i>List Of Flights </i>
+        </div>
+        <div>
+          <a href="/flightenquiry/flightinterface"><img src="/images/addflight.png" height="50" width="50"></a>
+        </div>
+      </div>
+
+      <table class="table table-hover">
+        <thead>
+          <tr>
+
+            <th scope="col">Flight Name</th>
+            <th scope="col">Flight Seats/<br>Days</th>
+            <th scope="col">Source City</th>
+            <th scope="col">Destination City</th>
+            <th scope="col">Company</th>
+            <th scope="col">Logo</th>
+            <th scope="col">Edit/Delete</th>
+          </tr>
+        </thead>
+        <tbody>
+          <tr>
+            <%data.map((item)=>{%>
+
+              <th scope="row">
+                <%=item.flightname %>
+                  <br>
+                  <%=item.flighttype %>
+              </th>
+              <td>
+                <%=item.flightseats %>
+                  <br>
+                  <%=item.days %>
+              </td>
+
+              <td>
+                <%=item.source %>
+                  <br>
+                  <%=item.departuretime %>
+              </td>
+              <td>
+                <%=item.destination %>
+                  <br>
+                  <%=item.arrivaltime %>
+              </td>
+              <td>
+                <%=item.company %>
+              </td>
+              <td>
+                <br>
+                <a href="/flightenquiry/searchbyidforimage?fid=<%=item.flightid %>"> <img src="/images/<%=item.logo %>"
+                    width='30' /></a>
+              </td>
+              <td>
+
+                <a href="/flightenquiry/searchbyid?fid=<%=item.flightid%>">
+                  Edit/Delete
+                </a>
+
+
+              </td>
+          </tr>
+          <% }) %>
+            </tr>
+
+        </tbody>
+      </table>
+    </div>
+  </div>
+</body>
+
+</html>
